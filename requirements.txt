@@ -3,4 +3,5 @@ numpy
 pandas
 yfinance
 PyPortfolioOpt
+pypfopt
 plotly
