@@ -2,5 +2,5 @@ streamlit
 numpy
 pandas
 yfinance
-pypfopt
+pypfopt==1.5.5
 plotly
