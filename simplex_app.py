@@ -7,7 +7,7 @@ import plotly.express as px
 
 # Theme configuration
 st.set_page_config(
-    page_title="Otimizador de Portfólio Zomma Quant",
+    page_title="Otimizador de Portfólio Zomma Quant - Simplex",
     page_icon="",
     layout="wide",
     initial_sidebar_state="expanded",
