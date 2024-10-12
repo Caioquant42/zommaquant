@@ -8,8 +8,34 @@ from pypfopt import expected_returns
 from datetime import datetime, timedelta
 import plotly.express as px
 
+# Theme configuration
+st.set_page_config(
+    page_title="Otimizador de Portfólio Zomma Quant",
+    page_icon="",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
 
-st.set_page_config(page_title="Otimizador de Portfólio Zomma Quant", page_icon="", layout="wide")
+# Custom theme
+st.markdown("""
+    <style>
+    .reportview-container {
+        background-color: #9fcaf7;
+    }
+    .sidebar .sidebar-content {
+        background-color: #F0F2F6;
+    }
+    .Widget>label {
+        color: #262730;
+    }
+    .stButton>button {
+        color: #ffffff;
+        background-color: #FF4B4B;
+        border-radius: 5px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 
 # Importe a classe ydata e a função optimize_portfolio do seu arquivo target_vol.py
 from target_vol import ydata, optimize_portfolio
