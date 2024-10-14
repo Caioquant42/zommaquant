@@ -5,7 +5,6 @@ from datetime import datetime, timedelta
 import plotly.express as px
 from scipy.optimize import minimize
 import matplotlib.pyplot as plt
-import pyfolio as pf
 from io import BytesIO
 # Import functions from return_target.py
 from return_target import ydata, portfolio_volatility, portfolio_return, optimize_portfolio, minimum_variance_portfolio
@@ -250,17 +249,6 @@ if st.button('Otimizar Portfólio'):
             daily_returns_min_var = (df_precos * min_var_weights).sum(axis=1).pct_change().dropna()
             daily_returns_max_sharpe = (df_precos * max_sharpe_weights).sum(axis=1).pct_change().dropna()
 
-            # Print pyfolio stats
-            st.subheader('Estatísticas do Portfólio (Pyfolio)')
-
-            st.write('Portfólio de Retorno Alvo:')
-            st.table(pf.timeseries.perf_stats(daily_returns_target))
-
-            st.write('Portfólio de Variância Mínima:')
-            st.table(pf.timeseries.perf_stats(daily_returns_min_var))
-
-            st.write('Portfólio de Máximo Índice de Sharpe:')
-            st.table(pf.timeseries.perf_stats(daily_returns_max_sharpe))
         else:
             st.error("A otimização não foi bem-sucedida. O retorno alvo pode ser inatingível com as restrições atuais.")
             
