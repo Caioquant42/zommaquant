@@ -265,9 +265,7 @@ st.sidebar.header('Atualização (14/10/2024)')
 st.sidebar.write('Nesta versão, foram incluídas as seguintes melhorias:')
 st.sidebar.markdown("""
 - Adição do portfólio de Máximo Índice de Sharpe
-- Implementação de restrição de alocação máxima por ativo
 - Gráfico de retorno cumulativo para comparação dos portfólios
-- Estatísticas detalhadas do portfólio usando Pyfolio
 - Melhorias na visualização e comparação dos resultados
 """)
 
