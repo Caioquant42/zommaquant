@@ -86,7 +86,7 @@ def portfolio_volatility(weights, cov_matrix):
 def portfolio_return(weights, returns):
     return np.sum(returns * weights)
 
-def optimize_portfolio(returns, cov_matrix, target_return, constraints):
+def optimize_portfolio(returns, cov_matrix, target_return, additional_constraints=None):
     num_assets = len(returns)
     
     def objective(weights):
@@ -98,13 +98,37 @@ def optimize_portfolio(returns, cov_matrix, target_return, constraints):
     def constraint_sum(weights):
         return np.sum(weights) - 1.0
     
-    constraints.append({'type': 'eq', 'fun': constraint_return})
-    constraints.append({'type': 'eq', 'fun': constraint_sum})
+    constraints = [
+        {'type': 'eq', 'fun': constraint_return},
+        {'type': 'eq', 'fun': constraint_sum}
+    ]
+    
+    if additional_constraints:
+        constraints.extend(additional_constraints)
     
     bounds = tuple((0, 1) for asset in range(num_assets))
     
     result = minimize(objective, num_assets*[1./num_assets,], method='SLSQP', bounds=bounds, constraints=constraints)
     return result
+
+def minimum_variance_portfolio(cov_matrix, additional_constraints=None):
+    num_assets = cov_matrix.shape[0]
+    
+    def objective(weights):
+        return portfolio_volatility(weights, cov_matrix)**2
+    
+    constraints = [
+        {'type': 'eq', 'fun': lambda x: np.sum(x) - 1}
+    ]
+    
+    if additional_constraints:
+        constraints.extend(additional_constraints)
+    
+    bounds = tuple((0, 1) for _ in range(num_assets))
+    
+    result = minimize(objective, [1./num_assets]*num_assets, method='SLSQP', bounds=bounds, constraints=constraints)
+    
+    return result.x
 
 def main():
     

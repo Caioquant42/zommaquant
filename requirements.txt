@@ -4,3 +4,5 @@ pandas
 yfinance
 scipy
 plotly
+pyfolio
+matplotlib.pyplot
