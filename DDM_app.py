@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from DDM import YData, get_dividend_information, TICKERS_DICT
+from DDM import get_dividend_information, TICKERS_DICT
 
 # Configuração do tema do Streamlit
 st.set_page_config(
