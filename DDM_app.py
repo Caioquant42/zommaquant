@@ -10,6 +10,26 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+# Tema personalizado
+st.markdown("""
+    <style>
+    .reportview-container {
+        background-color: #f0f2f6;
+    }
+    .sidebar .sidebar-content {
+        background-color: #e0e2e6;
+    }
+    .Widget>label {
+        color: #333333;
+    }
+    .stButton>button {
+        color: #ffffff;
+        background-color: #007bff;
+        border-radius: 5px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 st.title('Visualizador de Informações de Dividendos')
 
 # Método de seleção de tickers
